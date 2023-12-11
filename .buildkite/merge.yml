@@ -1,0 +1,12 @@
+steps:
+  - label: "Triggering pipelines"
+    plugins:
+      - monebag/monorepo-diff#v2.5.9:
+          diff: "git diff --name-only HEAD~1"
+          watch:
+            - path: "bar-service/"
+              config:
+                trigger: "bar-service-merge"
+            - path: "foo-service/"
+              config:
+                trigger: "foo-service-merge"
